@@ -23,22 +23,57 @@
 <script>
 	$(function() {
 		$('#btnResult').off().click(function() {
-			var num = $("#num").val();
-			var item = $("#item").val();
+			var total = 0;
+			var tmp = 0;
+			
+			for(i=0; i<30; i++){
+				tmp = 0;
+				var resultNum = $("#num_"+i).val();
+				var num = $("#hNum_"+i).val();
+				var resultItem = $("#item_"+i).val();
+				var item = $("#hItem_"+i).val();
+				
+				if (resultNum == num) {
+					$("#num_"+i).attr('class', 'form-control is-valid');
+					tmp++;
+				} else {
+					$("#num_"+i).attr('class', 'form-control is-invalid');
+				}
 
-			if (resultNum == num) {
-				$("#num").attr('class', 'form-control is-valid');
-			} else {
-				$("#num").attr('class', 'form-control is-invalid');
+				if (resultItem == item) {
+					$("#item_"+i).attr('class', 'form-control is-valid');
+					tmp++;
+				} else {
+					$("#item_"+i).attr('class', 'form-control is-invalid');
+				}
+				
+				if(tmp == 2){
+					total++;
+				}
 			}
-
-			if (resultItem == item) {
-				$("#item").attr('class', 'form-control is-valid');
-			} else {
-				$("#item").attr('class', 'form-control is-invalid');
-			}
+			alert("총 점수 : "+total+"/30");
 		});
 	});
+	
+	function showResult(index){
+		if($("#btn_"+index).val()=='0'){
+			$("#num_"+index).attr('class', 'form-control is-invalid');
+			$("#item_"+index).attr('class', 'form-control is-invalid');
+			$("#num_"+index).val($("#hNum_"+index).val());
+			$("#item_"+index).val($("#hItem_"+index).val());
+			
+			$('#btnShow_'+index)[0].innerHTML = 'Hide';
+			$("#btn_"+index).val('1');
+		}else{
+			$("#num_"+index).attr('class', 'form-control');
+			$("#item_"+index).attr('class', 'form-control');
+			$("#num_"+index).val('');
+			$("#item_"+index).val('');
+			
+			$('#btnShow_'+index)[0].innerHTML = 'Show';
+			$("#btn_"+index).val('0');
+		}
+	}
 </script>
 </head>
 
@@ -189,23 +224,30 @@
 							<form action="#">
 								<c:forEach items="${list}" var="test" varStatus="status">
 									<div class="card-body" id="question">
-										<h4 class="card-title" id="check_list">${status.count}. ${test.check_list}</h4>
+										<h4 class="card-title" id="check_list">${status.count}.
+											${test.check_list}</h4>
 										<div class="form-body">
 											<div class="row">
 												<div class="col-md-3">
 													<div class="form-group">
 														<input type="text" class="form-control"
 															id="num_${status.index}" name="num_${status.index}"
-															placeholder="항목번호">
+															placeholder="항목번호"> <input type="hidden"
+															id="hNum_${status.index}" value="${test.num}">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<input type="text" class="form-control"
 															id="item_${status.index}" name="item_${status.index}"
-															placeholder="항목명">
+															placeholder="항목명"> <input type="hidden"
+															id="hItem_${status.index}" value="${test.item}">
 													</div>
 												</div>
+												<button type="button" class="btn btn-info"
+													id="btnShow_${status.index}"
+													onclick="showResult(${status.index});">Show</button>
+												<input type="hidden" id="btn_${status.index}" value="0">
 											</div>
 										</div>
 									</div>

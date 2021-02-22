@@ -24,6 +24,7 @@
 	$(function() {
 		var resultNum = "${question.num}";
 		var resultItem = "${question.item}";
+		var show = false;
 
 		$('#btnResult').off().click(function() {
 			var num = $("#num").val();
@@ -40,6 +41,8 @@
 			} else {
 				$("#item").attr('class', 'form-control is-invalid');
 			}
+			show = false;
+			$('#btnShow')[0].innerHTML = 'Show';
 		});
 
 		$('#btnReset').off().click(function() {
@@ -52,8 +55,34 @@
 					$('#check_list')[0].innerHTML = question.check_list;
 					$("#num").attr('class', 'form-control');
 					$("#item").attr('class', 'form-control');
+					$("#num").val('');
+					$("#item").val('');
 				}
 			});
+			show = false;
+			$('#btnShow')[0].innerHTML = 'Show';
+		});
+		
+		$('#btnShow').off().click(function() {
+			show = !show;
+			
+			if(show){
+				$("#num").attr('class', 'form-control is-invalid');
+				$("#num").val(resultNum);
+				
+				$("#item").attr('class', 'form-control is-invalid');
+				$("#item").val(resultItem);
+				
+				$('#btnShow')[0].innerHTML = 'Hide';
+			}else{
+				$("#num").attr('class', 'form-control');
+				$("#num").val('');
+				
+				$("#item").attr('class', 'form-control');
+				$("#item").val('');
+				
+				$('#btnShow')[0].innerHTML = 'Show';
+			}
 		});
 	});
 </script>
@@ -223,6 +252,7 @@
 										</div>
 										<div class="form-actions">
 											<div class="text-right">
+												<button type="button" class="btn btn-info" id="btnShow">Show</button>
 												<button type="button" class="btn btn-info" id="btnResult">Submit</button>
 												<button type="button" class="btn btn-dark" id="btnReset">Reset</button>
 											</div>
