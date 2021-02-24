@@ -22,12 +22,12 @@ public class QuestionController {
 	@Autowired
 	IQuestionService QuestionService;
 	
-	@RequestMapping(value = "main", method = RequestMethod.GET)
+	@RequestMapping(value = "main.do", method = RequestMethod.GET)
 	public String index() {
-		return "redirect:/";
+		return "redirect:question.do";
 	}
 	
-	@RequestMapping(value = "question", method = RequestMethod.GET)
+	@RequestMapping(value = "question.do", method = RequestMethod.GET)
 	public ModelAndView question() {
 		Random random = new Random();
         random.setSeed(System.currentTimeMillis());
@@ -40,7 +40,7 @@ public class QuestionController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "test", method = RequestMethod.GET)
+	@RequestMapping(value = "test.do", method = RequestMethod.GET)
 	public ModelAndView test() {
 		Random random = new Random();
         random.setSeed(System.currentTimeMillis());
@@ -66,9 +66,8 @@ public class QuestionController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "reset", method = RequestMethod.POST)
+	@RequestMapping(value = "reset.do", method = RequestMethod.POST)
 	public @ResponseBody QuestionDTO reset() {
-		System.out.println("reset");
 		Random random = new Random();
         random.setSeed(System.currentTimeMillis());
 

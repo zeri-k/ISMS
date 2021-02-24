@@ -6,7 +6,7 @@
 </head>
 <body>
 <script>
-location.href="question";
+location.href="question.do";
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
-<html dir="ltr" lang="en">
+<html>
 
 <head>
 <meta charset="utf-8">
@@ -48,7 +48,7 @@
 		$('#btnReset').off().click(function() {
 			$.ajax({
 				type : "POST",
-				url : "reset",
+				url : "reset.do",
 				success : function(question) {
 					resultNum = question.num;
 					resultItem = question.item;
@@ -119,7 +119,7 @@
 					<!-- ============================================================== -->
 					<div class="navbar-brand">
 						<!-- Logo icon -->
-						<a href="main"> <b class="logo-icon"> <!-- Dark Logo icon -->
+						<a href="main.do"> <b class="logo-icon"> <!-- Dark Logo icon -->
 								<img src="./resources/assets/images/logo-icon.png"
 								alt="homepage" class="dark-logo" /> <!-- Light Logo icon --> <img
 								src="./resources/assets/images/logo-icon.png" alt="homepage"
@@ -170,9 +170,9 @@
 								class="hide-menu">ISMS </span></a>
 							<ul aria-expanded="false"
 								class="collapse  first-level base-level-line">
-								<li class="sidebar-item"><a href="question"
+								<li class="sidebar-item"><a href="question.do"
 									class="sidebar-link"><span class="hide-menu"> 문제 </span></a></li>
-								<li class="sidebar-item"><a href="test"
+								<li class="sidebar-item"><a href="test.do"
 									class="sidebar-link"><span class="hide-menu"> 모의시험 </span></a>
 								</li>
 							</ul></li>
@@ -199,7 +199,7 @@
 						<div class="d-flex align-items-center">
 							<nav aria-label="breadcrumb">
 								<ol class="breadcrumb m-0 p-0">
-									<li class="breadcrumb-item"><a href="main"
+									<li class="breadcrumb-item"><a href="main.do"
 										class="text-muted">Home</a></li>
 									<li class="breadcrumb-item text-muted active"
 										aria-current="page">Question</li>

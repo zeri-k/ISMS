@@ -216,5 +216,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>ROOT.war</finalName>
 	</build>
 </project>
