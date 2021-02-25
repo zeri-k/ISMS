@@ -1,12 +1,8 @@
 package com.kaget.isms.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.kaget.isms.dao.IQuestionDAO;
 import com.kaget.isms.model.QuestionDTO;
 
@@ -16,14 +12,14 @@ public class QuestionServiceImpl implements IQuestionService{
 	private IQuestionDAO dao;
 
 	@Override
-	public QuestionDTO selectQuestion(int num) {
+	public QuestionDTO selectQuestion() {
 		// TODO Auto-generated method stub
-		return dao.selectQuestion(num);
+		return dao.selectQuestion();
 	}
 
 	@Override
-	public HashMap<String, Object> selectTest(@Param("TestList") ArrayList<Integer> TestList) {
+	public HashMap<String, Object> selectTest() {
 		// TODO Auto-generated method stub
-		return dao.selectTest(TestList);
+		return dao.selectTest();
 	}
 }

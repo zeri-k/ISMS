@@ -30,13 +30,13 @@
 			var num = $("#num").val();
 			var item = $("#item").val();
 
-			if (resultNum == num) {
+			if (resultNum.replace(" ","") == num.replace(" ","")) {
 				$("#num").attr('class', 'form-control is-valid');
 			} else {
 				$("#num").attr('class', 'form-control is-invalid');
 			}
 
-			if (resultItem == item) {
+			if (resultItem.replace(" ","") == item.replace(" ","")) {
 				$("#item").attr('class', 'form-control is-valid');
 			} else {
 				$("#item").attr('class', 'form-control is-invalid');

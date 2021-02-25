@@ -3,19 +3,21 @@
 
 <mapper namespace="questionService">
 
-	<select id="selectQuestion" parameterType="int"
-		resultType="QuestionDTO">
+	<select id="selectQuestion" resultType="QuestionDTO">
 		SELECT *
-		FROM ISMS_ITEM
-		WHERE NO=#{no}
+		FROM (
+			SELECT *
+			FROM ISMS_ITEM
+			ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM = 1
 	</select>
 
-	<select id="selectTest" parameterType="java.util.List" resultType="QuestionDTO">
+	<select id="selectTest" resultType="QuestionDTO">
 		SELECT *
-		FROM ISMS_ITEM
-		WHERE NO in
-		<foreach collection="list" item="item" open="(" close=")" separator=",">
-			#{item}
-		</foreach>
+		FROM (
+			SELECT *
+			FROM ISMS_ITEM
+			ORDER BY DBMS_RANDOM.VALUE)
+		WHERE ROWNUM <![CDATA[<]]>= 30
 	</select>
 </mapper>

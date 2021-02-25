@@ -33,14 +33,14 @@
 				var resultItem = $("#item_"+i).val();
 				var item = $("#hItem_"+i).val();
 				
-				if (resultNum == num) {
+				if (resultNum.replace(" ","") == num.replace(" ","")) {
 					$("#num_"+i).attr('class', 'form-control is-valid');
 					tmp++;
 				} else {
 					$("#num_"+i).attr('class', 'form-control is-invalid');
 				}
 
-				if (resultItem == item) {
+				if (resultItem.replace(" ","") == item.replace(" ","")) {
 					$("#item_"+i).attr('class', 'form-control is-valid');
 					tmp++;
 				} else {
