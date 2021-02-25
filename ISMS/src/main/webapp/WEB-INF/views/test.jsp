@@ -33,14 +33,14 @@
 				var resultItem = $("#item_"+i).val();
 				var item = $("#hItem_"+i).val();
 				
-				if (resultNum.replace(" ","") == num.replace(" ","")) {
+				if (resultNum.replace(/\s/gi, '') == num.replace(/\s/gi, '')) {
 					$("#num_"+i).attr('class', 'form-control is-valid');
 					tmp++;
 				} else {
 					$("#num_"+i).attr('class', 'form-control is-invalid');
 				}
 
-				if (resultItem.replace(" ","") == item.replace(" ","")) {
+				if (resultItem.replace(/\s|·|,/gi, '') == item.replace(/\s|·|,/gi, '')) {
 					$("#item_"+i).attr('class', 'form-control is-valid');
 					tmp++;
 				} else {

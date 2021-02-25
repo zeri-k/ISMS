@@ -30,13 +30,13 @@
 			var num = $("#num").val();
 			var item = $("#item").val();
 
-			if (resultNum.replace(" ","") == num.replace(" ","")) {
+			if (resultNum.replace(/\s/gi, '') == num.replace(/\s/gi, '')) {
 				$("#num").attr('class', 'form-control is-valid');
 			} else {
 				$("#num").attr('class', 'form-control is-invalid');
 			}
 
-			if (resultItem.replace(" ","") == item.replace(" ","")) {
+			if (resultItem.replace(/\s|·|,/gi, '') == item.replace(/\s|·|,/gi, '')) {
 				$("#item").attr('class', 'form-control is-valid');
 			} else {
 				$("#item").attr('class', 'form-control is-invalid');
