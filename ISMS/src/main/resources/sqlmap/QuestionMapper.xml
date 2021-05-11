@@ -5,19 +5,15 @@
 
 	<select id="selectQuestion" resultType="QuestionDTO">
 		SELECT *
-		FROM (
-			SELECT *
-			FROM ISMS_ITEM
-			ORDER BY DBMS_RANDOM.VALUE)
-		WHERE ROWNUM = 1
+		FROM ISMS_ITEM
+		ORDER BY RAND()
+		LIMIT 1
 	</select>
 
 	<select id="selectTest" resultType="QuestionDTO">
 		SELECT *
-		FROM (
-			SELECT *
-			FROM ISMS_ITEM
-			ORDER BY DBMS_RANDOM.VALUE)
-		WHERE ROWNUM <![CDATA[<]]>= 30
+		FROM ISMS_ITEM
+		ORDER BY RAND()
+		LIMIT 30
 	</select>
 </mapper>
